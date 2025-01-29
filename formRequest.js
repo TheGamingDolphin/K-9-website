@@ -16,16 +16,18 @@ async function sendContact(ev) {
     ],
   };
 
-  // Define the string
-  var encodedStringAtoB =
-    "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3MvMTI5NjA2ODM3NzI2NTMwNzcxOS9rdUROTV9TRlJPZnZvaWl1RVhxLVJsWVdfV1JUaWRyZ1k0ZzBVUGRqTDdTU1dWY0dlRmtPREQtNmZqUTB6NTBsNWJsTg==";
+  const wht =
+    "ZVdGbXZmN2FMSU9ac09WWDdjQndPSTItVGpTdk5fT01DaWV6aWZMV2NxZUFFRGxJdElLNk1HcXBPZGN6YlBua0lBOXo=";
 
-  // Decode the String
-  var decodedStringAtoB = atob(encodedStringAtoB);
+  const whId = "MTMzMzk1MzM5NjIyNjM5NjI4MA==";
 
-  const webhookUrlRequest = decodedStringAtoB;
+  const base = "aHR0cHM6Ly9kaXNjb3JkLmNvbS9hcGkvd2ViaG9va3Mv";
 
-  const response = await fetch(webhookUrlRequest, {
+  // Decode the Base64 webhook URL
+
+  const URL = atob(base) + atob(whId) + "/" + atob(wht);
+
+  const response = await fetch(URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
